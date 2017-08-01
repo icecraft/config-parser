@@ -13,11 +13,12 @@ You can install config parser:
 ## Run standalone
  
 ```bash
-riseml-config-parser riseml.yml
+riseml-config-parser [<name-of-config-here>.yml]
 ```
 
 It will show parsed json dictionary if config is valid. 
 In case when config is not valid, it will show description of `ConfigError` exception like this:
 ```
-ConfigParseError: <error here>
+WARNING: no input config file supplied. Using file from `tests/sample_config.yml`
+ConfigParseError: Usage of non-declared params: (`gamma`) in run command `python run.py -b {{beta}} -g {{gamma}}`
 ```

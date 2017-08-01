@@ -20,10 +20,10 @@ train:
     worker:
       gpus: 2
   run: # bash command validated with interpolated "parameters"
-  - something
-  - mybinary {{optim}} {{alpha}} {{beta}} {{embedding-size}} {{learning-rate}}
+  - python run.py -b {{beta}}
+  - mybinary {{optim}} {{enabled}} {{beta}} {{learning-rate}}
   params:
-    enbabled: true
+    enabled: true
     optim: rmsprop abcdef
     more-value: 1
     beta:
@@ -38,8 +38,8 @@ train:
     something:
       - test123
       - myvalue3
-#  hyperparams:
-#    max-parallel-experiments: 4
+  hyperparams:
+    max-parallel-experiments: 4
   inputs: sample-data
 #  inputs:
 #  - sample-data1

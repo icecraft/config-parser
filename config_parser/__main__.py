@@ -1,22 +1,30 @@
-from .utils import ConfigValidationError
-from .sections.repository import RepositoryConfig
+from __future__ import print_function
+
+from config_parser.utils import ConfigError
+from config_parser.sections.repository import RepositoryConfig
 
 
-if __name__ == '__main__':
+def main():
     import sys
-    try:
-        if len(sys.argv) > 1:
-            path = sys.argv[1]
-        else:
-            path = 'sample_config.yml'
+    import os.path as P
 
-        c = RepositoryConfig.from_yml_file('api/configs/%s' % path)
+    if len(sys.argv) > 1:
+        path = sys.argv[1]
+    else:
+        print('WARNING: no input config file supplied. Using file from `tests/sample_config.yml`')
+        path = P.join(P.dirname(__file__), 'tests/sample_config.yml')
+
+    try:
+        c = RepositoryConfig.from_yml_file(path)
         print(dict(c))
 
         # from .sections.deploy import DeploySection
         # deploy = DeploySection.from_yml_file('api/config_parser/sample_deploy.yml')
         # print(dict(deploy))
 
-    except ConfigValidationError as e:
-        print('ConfigParseError:')
-        print(e.message)
+    except ConfigError as e:
+        print('ConfigParseError: %s' % e.message)
+
+
+if __name__ == '__main__':
+    main()

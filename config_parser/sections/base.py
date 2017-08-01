@@ -10,6 +10,10 @@ from ..utils import ConfigError, ConfigValidationError, remove_key_dashes
 class SectionBase(object):
     schema_file = None
 
+    def __new__(cls, *args, **kwargs):
+        cls.post_validate(kwargs)
+        return object.__new__(cls)
+
     def __iter__(self):
         for key in self.__dict__:
             value = getattr(self, key)
@@ -68,8 +72,6 @@ class SectionBase(object):
         except ValidationError as e:
             # re-raise it with our exception adapter
             raise ConfigValidationError(exc=e)
-
-        cls.post_validate(data)
 
     @classmethod
     def pre_validate(cls, data):
