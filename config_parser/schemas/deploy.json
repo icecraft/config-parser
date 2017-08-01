@@ -1,0 +1,9 @@
+{
+  "id": "deploy.json",
+  "additionalProperties": false,
+  "required": ["image", "run"],
+  "properties": {
+    "image": {"$ref": "job.json#/defs/image"},
+    "run": {"$ref": "job.json#/defs/run"}
+  }
+}

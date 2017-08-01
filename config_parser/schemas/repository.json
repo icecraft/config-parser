@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "repository.json",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "repository": {"type": "string"},
+    "train": {"$ref": "train.json"},
+    "deploy": {"$ref": "deploy.json"}
+  }
+}

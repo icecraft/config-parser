@@ -1,0 +1,40 @@
+{
+  "defs": {
+    "params": {
+      "patternProperties": {
+        "^.*$": {
+          "oneOf": [
+            {"type": "number"},
+            {"type": "string"},
+            {"type": "boolean"},
+            {
+              "type": "object",
+              "required": ["range"],
+              "properties": {
+                "range": {
+                  "required": ["min", "max", "step"],
+                  "properties": {
+                    "max": {"type": "number"},
+                    "min": {"type": "number"},
+                    "step": {"type": "number"}
+                  }
+                }
+              }
+            }, {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            }, {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

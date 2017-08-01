@@ -1,0 +1,53 @@
+{
+  "id": "train.json",
+  "type": "object",
+  "required": ["image", "resources", "run"],
+  "additionalProperties": false,
+  "properties": {
+    "framework": {
+      "enum": ["tensorflow", "riseml_basic"]
+    },
+    "image": {"$ref": "job.json#/defs/image"},
+    "run": {"$ref": "job.json#/defs/run"},
+    "tensorflow": {
+      "type": "object",
+      "required": ["tensorboard"],
+      "properties": {
+        "distributed": {"type": "boolean"},
+        "ps-count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "worker-count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "tensorboard": {"type": "string"}
+      }
+    },
+    "resources": {
+      "oneOf": [
+        {"$ref": "resources.json#/defs/resources"},
+        {"$ref": "resources.json#/defs/resource-group"}
+      ]
+    },
+    "params": {"$ref": "params.json#/defs/params"},
+    "hyperparams": {
+      "type": "object",
+      "properties": {
+        "max-parallel-experiments": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "inputs": {
+      "oneOf": [{
+        "type": "array",
+        "items": {"type": "string"}
+      },{
+        "type": "string"
+      }]
+    }
+  }
+}

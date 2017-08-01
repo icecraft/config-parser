@@ -1,0 +1,4 @@
+image:
+  name: riseml/base:latest-squashed
+  install: apt-get -y update
+run: python3 demo.py

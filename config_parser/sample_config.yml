@@ -1,0 +1,51 @@
+repository: myRepoName
+train:
+  framework: tensorflow # currently only one config
+  image:
+    name: riseml/base:latest-squashed # image needs to exist
+    install:
+    - apt-get -y update # proper type is 'bash command', right?
+    - apt-get -y install python3-minimal python3-pip
+    - pip3 install -r requirements.txt
+  tensorflow: # framework parameters are not required (check on python side)
+    distributed: true
+    ps-count: 2
+    worker-count: 4
+    tensorboard: some/directory/with/summaries # proper type "unix relative path"
+  resources:
+    master:
+      gpus: 1
+      cpus: 4
+      mem: 1024 # 'hello'
+    worker:
+      gpus: 2
+  run: # bash command validated with interpolated "parameters"
+  - something
+  - mybinary {{optim}} {{alpha}} {{beta}} {{embedding-size}} {{learning-rate}}
+  params:
+    enbabled: true
+    optim: rmsprop abcdef
+    more-value: 1
+    beta:
+      range:
+        min: 0.1
+        max: 1
+        step: 0.1
+    learning-rate:
+      - 1.4
+      - 2.9
+      - 4.2
+    something:
+      - test123
+      - myvalue3
+#  hyperparams:
+#    max-parallel-experiments: 4
+  inputs: sample-data
+#  inputs:
+#  - sample-data1
+#  - sample-data2
+deploy:
+  image:
+    name: riseml/base:latest-squashed
+    install: apt-get -y update
+  run: python3 demo.py
