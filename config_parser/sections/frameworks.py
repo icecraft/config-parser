@@ -1,6 +1,7 @@
 from .base import SectionBase
 from ..utils import ConfigError
 
+
 class BaseFrameworkSection(SectionBase):
     pass
 
@@ -21,7 +22,6 @@ class Tensorflow(BaseFrameworkSection):
             else:
                 raise ConfigError('ps_count and worker_count is required '
                                   'for distributed jobs')
-
 
 
 class RiseMLBasic(BaseFrameworkSection):

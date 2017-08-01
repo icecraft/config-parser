@@ -48,6 +48,8 @@ class SectionBase(object):
 
     @classmethod
     def validate(cls, data):
+        cls.pre_validate(data)
+
         assert cls.schema_file is not None, \
             'You should set `%s` for independently validated section `%s`' \
             % ('schema_file', cls.__name__)
@@ -66,3 +68,23 @@ class SectionBase(object):
         except ValidationError as e:
             # re-raise it with our exception adapter
             raise ConfigValidationError(exc=e)
+
+        cls.post_validate(data)
+
+    @classmethod
+    def pre_validate(cls, data):
+        """
+        Override this method with additional validators.
+        They will be applied BEFORE jsonschema validation.
+        Note: don't rely blindly on dictionary keys, structure can be invalid.
+        """
+        pass
+
+    @classmethod
+    def post_validate(cls, data):
+        """
+        Override this method with additional validators.
+        They will be applied AFTER jsonschema structure will be validated.
+        Dictionary keys can be accessed safely.
+        """
+        pass

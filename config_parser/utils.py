@@ -18,6 +18,10 @@ class ConfigValidationError(ConfigError):
         super(ConfigValidationError, self).__init__(message, *args)
 
 
+class PostValidationError(ConfigError):
+    pass
+
+
 def parse_int(v):
     if v:
         try:
