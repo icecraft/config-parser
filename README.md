@@ -3,7 +3,7 @@
 ## Installation
 
 You can install config parser:
-* via `pip install -e config-parser`, and `config_parser` module will be linked with `config-parser` folder.
+* via `pip install -e path/to/config-parser`, and `config_parser` module will be linked with `config-parser` folder.
 * via `requirements.txt`, just add `-e git+https://github.com/riseml/config-parser.git@master#egg=config_parser` to `requirements.txt`
 * via `setup.py`:
   * create `dependency-links.txt` in root of your python package (if not exists)
