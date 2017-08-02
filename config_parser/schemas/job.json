@@ -12,7 +12,8 @@
             "type": "string"
           }]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "run": {
       "oneOf": [{

@@ -23,7 +23,8 @@
           "minimum": 0
         },
         "tensorboard": {"type": "string"}
-      }
+      },
+      "additionalProperties": false
     },
     "resources": {
       "oneOf": [
@@ -39,7 +40,8 @@
           "type": "integer",
           "minimum": 1
         }
-      }
+      },
+      "additionalProperties": false
     },
     "inputs": {
       "oneOf": [{
