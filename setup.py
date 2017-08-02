@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='config_parser',
-    version='0.1',
+    version='0.1.0',
     description="RiseML Config Parser",
     author_email="contact@riseml.com",
     url="https://riseml.com",
