@@ -17,3 +17,12 @@ config_parser/sections/repository.py
 config_parser/sections/resources.py
 config_parser/sections/train.py
 config_parser/tests/__init__.py
+config_parser/tests/sample_config.yml
+config_parser/tests/sample_deploy.yml
+config_parser/tests/sample_train.yml
+config_parser/schemas/deploy.json
+config_parser/schemas/job.json
+config_parser/schemas/params.json
+config_parser/schemas/repository.json
+config_parser/schemas/resources.json
+config_parser/schemas/train.json
