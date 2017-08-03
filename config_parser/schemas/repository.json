@@ -4,7 +4,7 @@
   "type": "object",
   "additionalProperties": false,
   "properties": {
-    "repository": {"type": "string"},
+    "project": {"type": "string"},
     "train": {"$ref": "train.json"},
     "deploy": {"$ref": "deploy.json"}
   }
