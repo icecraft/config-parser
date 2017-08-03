@@ -6,8 +6,8 @@ from .base import SectionBase
 class RepositoryConfig(SectionBase):
     schema_file = 'repository.json'
 
-    def __init__(self, repository, train=None, deploy=None):
-        self.repository = repository
+    def __init__(self, project, train=None, deploy=None):
+        self.project = project
 
         if train:
             self.train = TrainSection(**train)
