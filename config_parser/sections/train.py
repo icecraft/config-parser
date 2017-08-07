@@ -14,7 +14,7 @@ class TrainSection(JobSection):
                  params=None, hyperparams=None, **kwargs):
 
         self.framework = framework
-        self.inputs = inputs if inputs else None
+        # self.inputs = inputs if inputs else None
         self.params = params
         self.hyperparams = HyperparamsSection(**(hyperparams or {}))
 
