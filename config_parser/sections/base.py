@@ -19,7 +19,7 @@ class SectionBase(object):
             value = getattr(self, key)
             if isinstance(value, SectionBase):
                 value = dict(value)
-            yield key, value
+            yield key.replace('_', '-'), value
 
     def __getitem__(self, item):
         return self.__dict__[item]
