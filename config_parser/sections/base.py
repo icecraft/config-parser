@@ -58,7 +58,7 @@ class SectionBase(object):
             'You should set `%s` for independently validated section `%s`' \
             % ('schema_file', cls.__name__)
 
-        schemas_path = P.join(P.dirname(P.abspath(__file__)), '../schemas')
+        schemas_path = P.join(P.dirname(P.dirname(P.abspath(__file__))), 'schemas')
 
         base_schema_path = P.join(schemas_path, cls.schema_file)
         with open(base_schema_path) as f:
