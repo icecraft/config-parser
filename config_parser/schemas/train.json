@@ -33,15 +33,9 @@
       ]
     },
     "params": {"$ref": "params.json#/defs/params"},
-    "hyperparams": {
-      "type": "object",
-      "properties": {
-        "max-parallel-experiments": {
-          "type": "integer",
-          "minimum": 1
-        }
-      },
-      "additionalProperties": false
+    "concurrent-experiments": {
+      "type": "integer",
+      "minimum": 1
     },
     "inputs": {
       "oneOf": [{

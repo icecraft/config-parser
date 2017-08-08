@@ -1,7 +1,6 @@
 from .jobs import JobSection
 from .resources import ResourcesSection, ResourceValuesSection
 from .frameworks import fw_mappings
-from .hyperparams import HyperparamsSection
 
 from ..utils import ConfigError, remove_key_dashes
 
@@ -11,12 +10,12 @@ class TrainSection(JobSection):
     schema_file = 'train.json'
 
     def __init__(self, image, run, inputs=None, framework=None, resources=None,
-                 params=None, hyperparams=None, **kwargs):
+                 params=None, concurrent_experiments=None, **kwargs):
 
         self.framework = framework
         # self.inputs = inputs if inputs else None
         self.params = params
-        self.hyperparams = HyperparamsSection(**(hyperparams or {}))
+        self.concurrent_experiments = concurrent_experiments
 
         if self.framework:
             if self.framework not in kwargs:

@@ -38,8 +38,7 @@ train:
     something:
       - test123
       - myvalue3
-  hyperparams:
-    max-parallel-experiments: 4
+  concurrent-experiments: 4
   inputs: sample-data
 #  inputs:
 #  - sample-data1
