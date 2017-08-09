@@ -4,7 +4,7 @@ import jsonschema
 from jsonschema.exceptions import ValidationError
 import os.path as P
 
-from ..utils import ConfigError, ConfigValidationError, remove_key_dashes
+from ..utils import ConfigError, ConfigValidationError, remove_key_dashes, remove_empty_values
 
 
 class SectionBase(object):
@@ -23,6 +23,9 @@ class SectionBase(object):
 
     def __getitem__(self, item):
         return self.__dict__[item]
+
+    def as_dict(self):
+        return remove_empty_values(dict(self))
 
     @classmethod
     def from_dict(cls, data):

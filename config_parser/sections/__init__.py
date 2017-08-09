@@ -4,7 +4,7 @@ from .repository import RepositoryConfig
 from .resources import ResourcesSection, ResourceValuesSection
 
 __all__ = ['RepositoryConfig', 'DeploySection', 'TrainSection', 'job_section_classes', 'get_job_section',
-           'ResourcesSection', 'ResourceValuesSection', ]
+           'ResourcesSection', 'ResourceValuesSection' ]
 
 
 def get_job_section(kind):

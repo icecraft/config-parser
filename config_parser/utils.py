@@ -35,3 +35,9 @@ def remove_key_dashes(data, exceptions=[]):
         return dict((k.replace('-','_'), v if k in exceptions else remove_key_dashes(v)) for k, v in data.items())
     else:
         return data
+
+def remove_empty_values(data):
+    if isinstance(data, dict):
+        return dict((k, v) for k, v in data.items() if v is not None)
+    else:
+        return data
