@@ -32,6 +32,12 @@ def parse_int(v):
 
 def remove_key_dashes(data, exceptions=[]):
     if isinstance(data, dict):
-        return dict((k.replace('-','_'), v if k in exceptions else remove_key_dashes(v)) for k, v in data.items())
+        new_dict = {}
+
+        for k, v in data.items():
+            value = v if k in exceptions else remove_key_dashes(v, exceptions)
+            new_dict[k.replace('-', '_')] = value
+
+        return new_dict
     else:
         return data
