@@ -36,14 +36,6 @@
     "concurrent-experiments": {
       "type": "integer",
       "minimum": 1
-    },
-    "inputs": {
-      "oneOf": [{
-        "type": "array",
-        "items": {"type": "string"}
-      },{
-        "type": "string"
-      }]
     }
   }
 }

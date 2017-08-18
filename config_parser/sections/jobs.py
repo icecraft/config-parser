@@ -15,7 +15,7 @@ class ImageSection(SectionBase):
 class JobSection(SectionBase):
     def __init__(self, image, run):
         self.image = ImageSection(**image)
-        self.run = run
+        self.run = [run] if not isinstance(run, list) else run
 
     @classmethod
     def post_validate(cls, data):
