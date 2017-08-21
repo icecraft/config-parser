@@ -7,7 +7,7 @@ class BaseFrameworkSection(SectionBase):
 
 
 class Tensorflow(BaseFrameworkSection):
-    def __init__(self, tensorboard, distributed=False, ps_count=None, worker_count=None, ):
+    def __init__(self, tensorboard=False, distributed=False, ps_count=None, worker_count=None, ):
         self.tensorboard = tensorboard
         self.distributed = distributed
 

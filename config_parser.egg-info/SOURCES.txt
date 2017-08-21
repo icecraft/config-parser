@@ -17,7 +17,6 @@ config_parser/sections/__init__.py
 config_parser/sections/base.py
 config_parser/sections/deploy.py
 config_parser/sections/frameworks.py
-config_parser/sections/hyperparams.py
 config_parser/sections/jobs.py
 config_parser/sections/repository.py
 config_parser/sections/resources.py
