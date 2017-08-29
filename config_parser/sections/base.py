@@ -32,7 +32,7 @@ class SectionBase(object):
         # exception can be raised here
         cls.validate(data)
 
-        return cls(**remove_key_dashes(data, exceptions=['params']))
+        return cls(**remove_key_dashes(data, exceptions=['parameters']))
 
     @classmethod
     def from_json(cls, json_text):
