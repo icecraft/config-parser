@@ -1,6 +1,6 @@
 {
   "defs": {
-    "resource-group": {
+    "resources": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
@@ -9,28 +9,13 @@
           "minimum": 0
         },
         "cpus": {
-          "anyOf": [{
-            "type": "number",
-            "minimum": 0.01
-          },{
-            "type": "integer",
-            "minimum": 1
-          }]
+          "type": "number",
+          "minimum": 0.01
         },
         "mem": {
-          "type": "integer",
-          "minimum": 1
+          "type": "number",
+          "minimum": 0.01
         }
-      }
-    },
-
-    "resources": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "master": {"$ref": "#/defs/resource-group"},
-        "worker": {"$ref": "#/defs/resource-group"},
-        "ps": {"$ref": "#/defs/resource-group"}
       }
     }
   }

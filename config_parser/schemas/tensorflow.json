@@ -1,0 +1,39 @@
+{
+  "defs": {
+    "jobDefinition": {
+        "oneOf": [
+            { "type": "integer", "minimum": 1 },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "count": { "type": "integer", "minimum": 1 },
+                "resources": { "$ref": "resources.json#/defs/resources" }
+              }
+            }
+          ]
+    },
+    "masterJobOverride": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+            "resources": { "$ref": "resources.json#/defs/resources" }
+        }
+    },
+    "tensorflow": {
+        "type": "object",
+        "properties": {
+          "distributed": {
+            "type": "object",
+            "properties": {
+              "ps": { "$ref": "#/defs/jobDefinition" },
+              "worker": { "$ref": "#/defs/jobDefinition" },
+              "master": { "$ref": "#/defs/masterJobOverride" }
+            }
+          },          
+          "tensorboard": { "type": "boolean" }
+        },
+        "additionalProperties": false
+    }
+  }
+}
