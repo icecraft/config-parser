@@ -7,7 +7,7 @@
     "image": { "$ref": "job.json#/defs/image" },
     "resources": { "$ref": "resources.json#/defs/resources" },
     "run": { "$ref": "job.json#/defs/run" },
-    "framework": { "enum": ["tensorflow", "riseml_basic"] },
+    "framework": { "enum": ["tensorflow"] },
     "tensorflow": { "$ref": "tensorflow.json#/defs/tensorflow" },
     "parameters": { "$ref": "params.json#/defs/params" },
     "concurrency": { "type": "integer", "minimum": 1 }
