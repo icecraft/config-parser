@@ -13,6 +13,7 @@ config_parser/schemas/params.json
 config_parser/schemas/repository.json
 config_parser/schemas/resources.json
 config_parser/schemas/train.json
+config_parser/schemas/tensorflow.json
 config_parser/sections/__init__.py
 config_parser/sections/base.py
 config_parser/sections/deploy.py
@@ -21,6 +22,7 @@ config_parser/sections/jobs.py
 config_parser/sections/repository.py
 config_parser/sections/resources.py
 config_parser/sections/train.py
+config_parser/sections/tensorflow.py
 config_parser/tests/__init__.py
 config_parser/tests/sample_config.yml
 config_parser/tests/sample_deploy.yml
