@@ -50,7 +50,10 @@ class SectionBase(object):
 
     @classmethod
     def from_yml(cls, yml_text):
-        data = yaml.load(yml_text)
+        try:
+            data = yaml.safe_load(yml_text)
+        except yaml.YAMLError, exc:
+            raise ConfigError("Error in configuration file: {}".format(exc))
         return cls.from_dict(data)
 
     @classmethod
