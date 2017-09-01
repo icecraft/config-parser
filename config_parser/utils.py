@@ -12,7 +12,7 @@ class ConfigValidationError(ConfigError):
                              'needs to be supplied when raising ConfigValidationError')
 
         message = ('%s\n' % message) if message else ''
-        message += 'On instance: %s\n' % _utils.format_as_index(exc.relative_path)
+        message += 'On path: "%s"\n' % ' '.join('{}:'.format(path) for path in exc.relative_path)
         message += 'Error: %s' % exc.args[0]
 
         super(ConfigValidationError, self).__init__(message, *args)
