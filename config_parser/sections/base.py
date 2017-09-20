@@ -52,7 +52,7 @@ class SectionBase(object):
     def from_yml(cls, yml_text):
         try:
             data = yaml.safe_load(yml_text)
-        except yaml.YAMLError, exc:
+        except yaml.YAMLError as exc:
             raise ConfigError("Error in configuration file: {}".format(exc))
         return cls.from_dict(data)
 
