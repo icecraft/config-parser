@@ -1,3 +1,0 @@
-[console_scripts]
-riseml-config-parser = config_parser.__main__:main
-
