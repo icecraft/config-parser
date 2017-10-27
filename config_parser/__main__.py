@@ -1,5 +1,6 @@
 from __future__ import print_function
 
+import json
 from config_parser.utils import ConfigError
 from config_parser.sections.repository import RepositoryConfig
 
@@ -16,14 +17,14 @@ def main():
 
     try:
         c = RepositoryConfig.from_yml_file(path)
-        print(dict(c))
+        print(json.dumps(dict(c), indent=4))
 
         # from .sections.deploy import DeploySection
         # deploy = DeploySection.from_yml_file('api/config_parser/sample_deploy.yml')
         # print(dict(deploy))
 
     except ConfigError as e:
-        print('ConfigParseError: %s' % e.message)
+        print('ConfigParseError: %s' % e)
 
 
 if __name__ == '__main__':

@@ -12,7 +12,7 @@ setup(
           'riseml-config-parser = config_parser.__main__:main'
         ]
     },
-    install_requires=['jsonschema >= 2.6.0'],
+    install_requires=['jsonschema >= 2.6.0', 'pyyaml'],
     packages=find_packages(),
     include_package_data=True,
     long_description=""
