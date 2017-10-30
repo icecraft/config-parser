@@ -1,7 +1,7 @@
 {
   "id": "train.json",
   "type": "object",
-  "required": ["image", "resources", "run"],
+  "required": ["resources", "run"],
   "additionalProperties": false,
   "properties": {
     "image": { "$ref": "job.json#/defs/image" },

@@ -14,7 +14,7 @@ class ImageSection(SectionBase):
 
 class JobSection(SectionBase):
     def __init__(self, image, run):
-        self.image = ImageSection(**image)
+        self.image = ImageSection(**image) if image else None
         self.run = [run] if not isinstance(run, list) else run
 
     @classmethod
