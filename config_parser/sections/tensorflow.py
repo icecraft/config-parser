@@ -23,7 +23,7 @@ class DistributedSection(SectionBase):
             self.ps = DistributedJobSection(**(ps or {}))
 
 class Tensorflow(SectionBase):
-    def __init__(self, parent, tensorboard=False, distributed=None, version=None):
+    def __init__(self, parent, tensorboard=True, distributed=None, version=None):
         self.tensorboard = tensorboard
         self.version = version
         if distributed:

@@ -1,19 +1,13 @@
 {
   "defs": {
-    "image": {
-      "type": "object",
-      "properties": {
-        "name": {"type": "string"},
-        "install": {
-          "oneOf": [{
-            "type": "array",
-            "items": {"type": "string"}
-          },{
-            "type": "string"
-          }]
-        }
-      },
-      "additionalProperties": false
+    "image": { "type": "string" },
+    "install": {
+      "oneOf": [{
+        "type": "array",
+        "items": {"type": "string"}
+      },{
+        "type": "string"
+      }]
     },
     "run": {
       "oneOf": [{

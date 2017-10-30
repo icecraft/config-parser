@@ -5,6 +5,7 @@
   "additionalProperties": false,
   "properties": {
     "image": { "$ref": "job.json#/defs/image" },
+    "install": { "$ref": "job.json#/defs/install" },
     "resources": { "$ref": "resources.json#/defs/resources" },
     "run": { "$ref": "job.json#/defs/run" },
     "framework": { "enum": ["tensorflow"] },
