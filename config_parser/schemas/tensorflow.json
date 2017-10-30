@@ -38,7 +38,7 @@
         },        
         "tensorboard": { "type": "boolean" },
         "version": {
-          "type": "string",
+          "type": ["string", "null"],
           "pattern": "^\\d+\\.\\d+\\.\\d+$"
         }
       },
