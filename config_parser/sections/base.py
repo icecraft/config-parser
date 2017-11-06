@@ -1,4 +1,5 @@
-import yaml
+from ruamel.yaml import YAML, YAMLError
+from ruamel.yaml.constructor import DuplicateKeyError
 import json
 import jsonschema
 from jsonschema.exceptions import ValidationError
@@ -50,10 +51,14 @@ class SectionBase(object):
 
     @classmethod
     def from_yml(cls, yml_text):
+        yaml = YAML(typ='safe')
         try:
-            data = yaml.safe_load(yml_text)
-        except yaml.YAMLError as exc:
+            data = yaml.load(yml_text)
+        except YAMLError as exc:
             raise ConfigError("Error in configuration file: {}".format(exc))
+        except DuplicateKeyError as exception:
+            raise ConfigError("Error in configuration file: Duplicate section in line {}, column {}."\
+                .format(exception.problem_mark.line + 1, exception.problem_mark.column + 1))
         return cls.from_dict(data)
 
     @classmethod
