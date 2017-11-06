@@ -39,7 +39,7 @@
         "tensorboard": { "type": "boolean" },
         "version": {
           "type": ["string", "null"],
-          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+          "pattern": "^\\d+\\.\\d+\\.\\d+|latest$"
         }
       },
       "additionalProperties": false
