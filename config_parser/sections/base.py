@@ -1,3 +1,5 @@
+import warnings
+import ruamel
 from ruamel.yaml import YAML, YAMLError
 from ruamel.yaml.constructor import DuplicateKeyError
 import json
@@ -7,6 +9,8 @@ import os.path as P
 
 from ..utils import ConfigError, ConfigValidationError, remove_key_dashes, remove_empty_values
 
+
+warnings.simplefilter('ignore', ruamel.yaml.error.MantissaNoDotYAML1_1Warning)
 
 class SectionBase(object):
     schema_file = None
