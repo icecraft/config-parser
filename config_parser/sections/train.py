@@ -37,13 +37,14 @@ class TrainSection(JobSection):
         if self.framework == 'tensorflow' and not self.image:
             tensorflow = getattr(self, 'tensorflow')
             name = tensorflow.version if tensorflow.version else 'latest'
-            if self.resources.gpus > 0 or (tensorflow.distributed and (
+            if not name.endswith('-gpu') and \
+                (self.resources.gpus > 0 or \
+                 (tensorflow.distributed and (
                     tensorflow.distributed.master.resources.gpus > 0 or
                     tensorflow.distributed.worker.resources.gpus > 0 or
-                    tensorflow.distributed.ps.resources.gpus > 0)):
+                    tensorflow.distributed.ps.resources.gpus > 0))):
                 name += '-gpu'
             self.image = 'tensorflow/tensorflow:{}'.format(name)
-
 
     @property
     def framework_config(self):
