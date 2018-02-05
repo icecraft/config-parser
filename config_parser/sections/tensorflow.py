@@ -10,8 +10,9 @@ class DistributedMasterOverrideSection(SectionBase):
     def __init__(self, resources=None):
         self.resources = ResourcesSection(**resources) if resources else None
 
-class DistributedSection(SectionBase):
-    def __init__(self, master=None, worker=None, ps=None):
+class TFDistributedDefaultSection(SectionBase):
+    def __init__(self, type=None, master=None, worker=None, ps=None):
+        self.type = ''
         self.master = DistributedMasterOverrideSection(**(master or {}))
         if isinstance(worker, int):
             self.worker = DistributedJobSection(count=worker)
@@ -22,17 +23,25 @@ class DistributedSection(SectionBase):
         else:
             self.ps = DistributedJobSection(**(ps or {}))
 
+class TFDistributedHorovodSection(SectionBase):
+    def __init__(self, type=None, worker=1):
+        self.type = 'horovod'
+        self.worker = worker
+
 class Tensorflow(SectionBase):
     def __init__(self, parent, tensorboard=True, distributed=None, version=None):
         self.tensorboard = tensorboard
         self.version = version
         if distributed:
-            self.distributed = DistributedSection(**distributed)
-            if not self.distributed.master.resources:
-                self.distributed.master.resources = parent.resources
-            if not self.distributed.worker.resources:
-                self.distributed.worker.resources = parent.resources
-            if not self.distributed.ps.resources:
-                self.distributed.ps.resources = parent.resources
+            if distributed['type'] == 'horovod':
+                self.distributed = TFDistributedHorovodSection(**distributed)
+            else:
+                self.distributed = TFDistributedDefaultSection(**distributed)
+                if not self.distributed.master.resources:
+                    self.distributed.master.resources = parent.resources
+                if not self.distributed.worker.resources:
+                    self.distributed.worker.resources = parent.resources
+                if not self.distributed.ps.resources:
+                    self.distributed.ps.resources = parent.resources
         else:
             self.distributed = None
