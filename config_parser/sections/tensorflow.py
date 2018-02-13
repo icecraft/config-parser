@@ -33,7 +33,7 @@ class Tensorflow(SectionBase):
         self.tensorboard = tensorboard
         self.version = version
         if distributed:
-            if distributed['type'] == 'horovod':
+            if distributed.get('type', None) == 'horovod':
                 self.distributed = TFDistributedHorovodSection(**distributed)
             else:
                 self.distributed = TFDistributedDefaultSection(**distributed)
