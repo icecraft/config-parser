@@ -35,14 +35,19 @@ class TrainSection(JobSection):
 
     def map_tensorflow_image(self):
         if self.framework == 'tensorflow' and not self.image:
+            owner = 'tensorflow'
+            repository = 'tensorflow'
             tensorflow = getattr(self, 'tensorflow')
-            name = tensorflow.version if tensorflow.version else 'latest'
-            if self.resources.gpus > 0 or (tensorflow.distributed and tensorflow.distributed.type == 'default' and (
+            tag = tensorflow.version if tensorflow.version else 'latest'
+            if tensorflow.distributed and tensorflow.distributed.type == 'horovod':
+                owner = 'riseml'
+                tag += '-horovod-latest'
+            if self.resources.gpus > 0 or (tensorflow.distributed and tensorflow.distributed.type != 'horovod' and (
                     tensorflow.distributed.master.resources.gpus > 0 or
                     tensorflow.distributed.worker.resources.gpus > 0 or
                     tensorflow.distributed.ps.resources.gpus > 0)):
-                name += '-gpu'
-            self.image = 'tensorflow/tensorflow:{}'.format(name)
+                tag += '-gpu'
+            self.image = '{}/{}:{}'.format(owner, repository, tag)
 
 
     @property
