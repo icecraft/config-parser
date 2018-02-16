@@ -20,26 +20,39 @@
         "resources": { "$ref": "resources.json#/defs/resources" }
       }
     },
+    "distributed": {
+      "type": "object",
+      "properties": {
+        "ps": { "$ref": "#/defs/jobDefinition" },
+        "worker": { "$ref": "#/defs/jobDefinition" },
+        "master": { "$ref": "#/defs/masterJobOverride" }
+      }
+    },
+    "horovod": {
+      "type": "object",
+      "properties": {
+        "workers": { "type": "integer", "minimum": 1 }
+      }
+    },
     "tensorflow": {
       "type": "object",
       "properties": {
-        "distributed": {
-          "oneOf": [
-            { "type": "null" },
-            {
-              "type": "object",
-              "properties": {
-                "ps": { "$ref": "#/defs/jobDefinition" },
-                "worker": { "$ref": "#/defs/jobDefinition" },
-                "master": { "$ref": "#/defs/masterJobOverride" }
-              }
-            }
-          ]
-        },        
-        "tensorboard": { "type": "boolean" },
         "version": {
           "type": ["string", "null"],
           "pattern": "^\\d+\\.\\d+\\.\\d+|latest$"
+        },
+        "tensorboard": { "type": "boolean" },
+        "distributed": {
+          "oneOf": [
+            { "type": "null" },
+            { "$ref": "#/defs/distributed" }
+          ]
+        },
+        "horovod": {
+          "oneOf": [
+            { "type": "null" },
+            { "$ref": "#/defs/horovod" }
+          ]
         }
       },
       "additionalProperties": false
