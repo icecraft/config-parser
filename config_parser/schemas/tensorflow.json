@@ -31,7 +31,19 @@
     "horovod": {
       "type": "object",
       "properties": {
-        "workers": { "type": "integer", "minimum": 1 }
+        "workers": { 
+          "oneOf": [
+            { "type": "integer", "minimum": 1 },
+            { 
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "count": { "type": "integer", "minimum": 1 },
+                "processes": { "type": "integer", "minimum": 1 }
+              }
+            }
+          ]
+        }
       }
     },
     "tensorflow": {

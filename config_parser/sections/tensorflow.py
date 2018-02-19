@@ -23,10 +23,18 @@ class TFDistributedDefaultSection(SectionBase):
         else:
             self.ps = DistributedJobSection(**(ps or {}))
 
+class TFHorovodWorkersSection(SectionBase):
+    def __init__(self, count=None, processes=None):
+        self.count = count
+        self.processes = processes
+
 class TFHorovodSection(SectionBase):
     def __init__(self, workers=None, version=None):
         self.version = version
-        self.workers = workers
+        if isinstance(workers, int):
+            self.workers = TFHorovodWorkersSection(count=workers)
+        else:
+            self.workers = TFHorovodWorkersSection(**(workers or {}))
 
 class Tensorflow(SectionBase):
     def __init__(self, parent, version=None, tensorboard=True, distributed=None, horovod=None):
