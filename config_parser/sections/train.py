@@ -43,13 +43,13 @@ class TrainSection(JobSection):
                 owner = 'riseml'
                 version = tensorflow.horovod.version if tensorflow.horovod.version else 'latest'
                 tag += '-horovod-' + version
-            if self.resources.gpus > 0 or (tensorflow.distributed and (
+            if not tag.endswith('-gpu') and \
+                (self.resources.gpus > 0 or (tensorflow.distributed and (
                     tensorflow.distributed.master.resources.gpus > 0 or
                     tensorflow.distributed.worker.resources.gpus > 0 or
-                    tensorflow.distributed.ps.resources.gpus > 0)):
+                    tensorflow.distributed.ps.resources.gpus > 0))):
                 tag += '-gpu'
             self.image = '{}/{}:{}'.format(owner, repository, tag)
-
 
     @property
     def framework_config(self):
