@@ -44,5 +44,5 @@ class Tensorflow(SectionBase):
                 self.distributed.ps.resources = parent.resources
         if horovod:
             if self.distributed:
-                raise ConfigError("You cannot use Distributed TensorFlow and Horvod at the same time!")
+                raise ConfigError("You cannot use Distributed TensorFlow and Horovod at the same time!")
             self.horovod = TFHorovodSection(**horovod)
