@@ -39,7 +39,7 @@
               "additionalProperties": false,
               "properties": {
                 "count": { "type": "integer", "minimum": 1 },
-                "processes": { "type": "integer", "minimum": 1 }
+                "processes": { "type": ["null", "integer"], "minimum": 1 }
               }
             }
           ]
