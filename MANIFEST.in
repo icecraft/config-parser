@@ -1,0 +1,3 @@
+
+recursive-include config_parser/schemas *.json
+      
