@@ -6,6 +6,7 @@
   "properties": {
     "image": { "$ref": "job.json#/defs/image" },
     "install": { "$ref": "job.json#/defs/install" },
+    "preemption": { "$ref": "job.json#/defs/preemption" },      
     "resources": { "$ref": "resources.json#/defs/resources" },
     "run": { "$ref": "job.json#/defs/run" },
     "framework": { "enum": ["tensorflow"] },
@@ -14,3 +15,4 @@
     "concurrency": { "type": "integer", "minimum": 1 }
   }
 }
+

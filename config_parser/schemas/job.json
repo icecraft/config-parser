@@ -1,6 +1,7 @@
 {
   "defs": {
     "image": { "type": "string" },
+    "preemption": { "type": "string" },      
     "install": {
       "oneOf": [{
         "type": "array",

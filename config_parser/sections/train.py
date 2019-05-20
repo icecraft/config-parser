@@ -14,13 +14,14 @@ class TrainSection(JobSection):
     schema_file = 'train.json'
 
     def __init__(self, run, resources, image=None, install=None, framework=None,
-                 parameters=None, concurrency=None, **kwargs):
+                 parameters=None, concurrency=None, preemption=None, **kwargs):
 
         self.resources = ResourcesSection(**resources)
         self.framework = framework
         self.parameters = parameters
         self.concurrency = concurrency
-
+        self.preemption = preemption
+        
         if self.framework:
             fw_data = dict()
             if self.framework in kwargs:
