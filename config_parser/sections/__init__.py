@@ -2,9 +2,11 @@ from .deploy import DeploySection
 from .train import TrainSection
 from .repository import RepositoryConfig
 from .resources import ResourcesSection
+from .jobs import JobSection
+
 
 __all__ = ['RepositoryConfig', 'DeploySection', 'TrainSection', 'job_section_classes', 'get_job_section',
-           'ResourcesSection' ]
+           'ResourcesSection', 'JobSection']
 
 
 def get_job_section(kind):
