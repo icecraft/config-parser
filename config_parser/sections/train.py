@@ -20,9 +20,10 @@ class TrainSection(JobSection):
         self.framework = framework
         self.parameters = parameters
         self.concurrency = concurrency
-        self.preemption = preemption 
+        self.preemption = preemption
         if preemption is not None:
             assert(preemption in ("yes", "no")), "preemption value must be none|yes|no"
+            assert(parameters is None), "preemption can not been used in hyperparams mode!"
         
         if self.framework:
             fw_data = dict()
